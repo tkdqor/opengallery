@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작가 목록 리스트</h1>
+{% for writer in writers %}
+<p>이름 : {{ writer.name }}</p>
+성별 : {{ writer.gender }}
+생년월일 : {{ writer.birth }}
+연락처 : {{ writer.mobile }}
+<br>
+{% endfor %}
+</body>
+</html>
