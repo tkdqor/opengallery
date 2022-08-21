@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작품 목록 리스트</h1>
+{% for painting in paintings %}
+<p>제목 : {{ painting.title }}</p>
+가격 : ₩{{ painting.price|floatformat:"0g" }}
+호수 : {{ painting.size }}
+작가 : {{ painting.writer.name }}
+<br>
+{% endfor %}
+</body>
+</html>

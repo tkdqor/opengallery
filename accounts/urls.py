@@ -5,7 +5,7 @@ from . import views
 app_name = "accounts"
 
 urlpatterns = [
-    # 로그인/회원가입 페이지
+    # 로그인/회원가입 페이지 url
     path("", views.accounts, name="index"),
     # 회원가입 url
     path("sign_up/", views.sign_up, name="sign_up"),
