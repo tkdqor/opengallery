@@ -1,12 +1,13 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
+
 class CustomUserManager(BaseUserManager):
     """
     Assignee : 상백
 
     custom user model을 사용하기 위해 UserManager 클래스와 create_user, create_superuser 함수 정의
-    user 생성 시, email를 필수로 지정 
+    user 생성 시, email를 필수로 지정
     """
 
     def create_user(self, email, password):
@@ -37,13 +38,14 @@ class User(AbstractBaseUser):
     User 모델을 커스텀해서 생성하는 클래스 정의
     이메일, 이름, 성별, 연락처, 생년월일 필드 설정
     """
+
     id = models.BigAutoField(primary_key=True)
     email = models.EmailField("이메일", max_length=100, unique=True)
     password = models.CharField("비밀번호", max_length=128)
     username = models.CharField("이름", max_length=16)
     gender = models.CharField("성별", max_length=2)
     mobile = models.CharField("연락처", max_length=20)
-    birth = models.DateField("생년월일")
+    birth = models.DateField("생년월일", null=True)
 
     """is_active가 False일 경우 계정이 비활성화됨"""
     is_active = models.BooleanField("활성화", default=True)
