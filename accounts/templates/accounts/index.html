@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+    <div>
+        <h1>로그인</h1>
+
+         <!-- 에러 메시지 띄우기 -->
+         <div id="login-error-box">
+            {% if error %}
+                <div id="login-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- 로그인 상태 나타내주기 -->
+        <div id="login-status">
+            {% if request.user %}
+                {{ request.user.email }}님, 환영합니다!
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+        <!-- 회원가입 정보 받기 -->
+        <form method="POST" action="{% url 'accounts:login' %}" enctype="multipart/form-data"> 
+            {% csrf_token %}
+            <div id="login-form-box">
+                <div id="login-form1">
+                    <label  class="form-label" for="email">이메일</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="이메일">
+                </div>
+                <div id="login-form2">
+                    <label  class="form-label" for="password">비밀번호</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="비밀번호">
+                </div>
+                <button type="submit" id="login_button" style="margin-top: 20px">로그인</button>
+            </div>
+    </div>
+
+    <br>
+
+    <div>
+        <a href="{% url 'accounts:sign_up' %}">회원가입</a>
+    </div>
+</body>
+</html>

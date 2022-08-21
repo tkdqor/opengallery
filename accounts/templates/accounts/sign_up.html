@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+    <div>
+        <h1>회원가입</h1>
+
+        <!-- 에러 메시지 띄우기 -->
+        <div id="signup-error-box">
+            {% if error %}
+                <div id="signup-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        <!-- 회원가입 정보 받기 -->
+        <form method="POST" action="{% url 'accounts:sign_up' %}" enctype="multipart/form-data"> 
+            {% csrf_token %}
+            <div id="signup-form-box">
+                <div id="signup-form1">
+                    <label  class="form-label" for="email">이메일</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="이메일">
+                </div>
+                <div id="signup-form2">
+                    <label  class="form-label" for="password">비밀번호</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="비밀번호">
+                </div>
+                <div id="signup-form3">
+                    <label  class="form-label" for="password_check">비밀번호 확인</label>
+                    <input class="form-control" type="password" id="password_check" name="password_check" placeholder="비밀번호 확인">
+                </div>
+                <div id="signup-form4">
+                    <label  class="form-label" for="username">이름</label>
+                    <input class="form-control" type="text" id="username" name="username" placeholder="이름">
+                </div>
+                <div id="signup-form5">
+                    <label  class="form-label" for="gender">성별</label>
+                    <input class="form-control" type="text" id="gender" name="gender" placeholder="성별">
+                </div>
+                <div id="signup-form6">
+                    <label  class="form-label" for="mobile">연락처</label>
+                    <input class="form-control" type="tel" id="mobile" name="mobile" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" placeholder="연락처">
+                </div>
+                <div id="signup-form7">
+                    <label  class="form-label" for="birth">생년월일</label>
+                    <input class="form-control" type="date" id="birth" name="birth" placeholder="생년월일">
+                </div>
+
+                <button type="submit" id="signup_button" style="margin-top: 20px">회원가입</button>
+            </div>
+    </div>
+</body>
+</html>
