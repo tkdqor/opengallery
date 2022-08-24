@@ -6,11 +6,13 @@
 <body>
 <h1>작품 목록 리스트</h1>
 {% for painting in paintings %}
-<p>제목 : {{ painting.title }}</p>
-가격 : ₩{{ painting.price|floatformat:"0g" }}
-호수 : {{ painting.size }}
-작가 : {{ painting.writer.name }}
-<br>
+{% if painting.writer.approval == True %}
+    <p>제목 : {{ painting.title }}</p>
+    가격 : ₩{{ painting.price|floatformat:"0g" }}
+    호수 : {{ painting.size }}
+    작가 : {{ painting.writer.name }}
+    <br>
+{% endif %}
 {% endfor %}
 </body>
 </html>
