@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작가 등록 신청하기</h1>
+
+<!-- 에러 메시지 띄우기 -->
+<div id="register-error-box">
+    {% if error %}
+        <div id="register-error">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+
+<br>
+
+<div>
+    <!-- 작가 등록 정보 받기 -->
+    <form method="POST" action="{% url 'writers:register' %}" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div id="register-form-box">
+            <div id="register-form-box">
+                <div id="register-form1">
+                    <label  class="form-label" for="email">이메일</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="이메일">
+                </div>
+                <div id="register-form2">
+                    <label  class="form-label" for="name">이름</label>
+                    <input class="form-control" type="text" maxlength='16' id="name" name="name" placeholder="이름">
+                </div>
+                <div id="register-form3">
+                    <label  class="form-label" for="gender">성별</label>
+                    <label><input class="form-control" type="checkbox" id="gender" name="gender" value="male">남자</label>
+                    <label><input class="form-control" type="checkbox" id="gender" name="gender" value="female">여자</label>
+                </div>
+                <div id="register-form4">
+                    <label  class="form-label" for="mobile">연락처</label>
+                    <input class="form-control" type="tel" id="mobile" name="mobile" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" placeholder="연락처">
+                </div>
+                <div id="register-form5">
+                    <label  class="form-label" for="birth">생년월일</label>
+                    <input class="form-control" type="date" id="birth" name="birth" placeholder="생년월일">
+                </div>
+            </div>
+            <button type="submit" id="register_button" style="margin-top: 20px">작가 등록 신청하기</button>
+        </div>
+</div>
+
+
+</body>
+</html>
