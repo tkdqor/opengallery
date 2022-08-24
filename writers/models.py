@@ -1,7 +1,8 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 from accounts.models import User
+
 
 class Writer(models.Model):
     """
@@ -13,8 +14,8 @@ class Writer(models.Model):
     """
 
     class Category(models.TextChoices):
-        male = 'male'
-        female = 'female'
+        male = "male"
+        female = "female"
 
     name = models.CharField("이름", max_length=16)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,9 +23,9 @@ class Writer(models.Model):
     birth = models.DateField("생년월일")
     email = models.EmailField("이메일", max_length=100, unique=True)
     mobile = models.CharField("연락처", max_length=20)
-    approval = models.BooleanField("작가등록여부", default=False)
+    approval = models.BooleanField(default=False, null=True, blank=True)
     created_at = models.DateTimeField("등록일자", auto_now_add=True)
-    updated_at = models.DateTimeField("수정일자", auto_now=True)  
+    updated_at = models.DateTimeField("수정일자", auto_now=True)
 
 
 class Painting(models.Model):
@@ -36,11 +37,11 @@ class Painting(models.Model):
     """
 
     title = models.CharField("제목", max_length=64)
-    writer = models.ForeignKey("Writer", on_delete=models.CASCADE, related_name='writer_painting')
+    writer = models.ForeignKey("Writer", on_delete=models.CASCADE, related_name="writer_painting")
     price = models.PositiveIntegerField("가격", default=0)
     size = models.IntegerField("호수", validators=[MinValueValidator(1), MaxValueValidator(500)])
     created_at = models.DateTimeField("등록일자", auto_now_add=True)
-    updated_at = models.DateTimeField("수정일자", auto_now=True)  
+    updated_at = models.DateTimeField("수정일자", auto_now=True)
 
 
 class Exhibition(models.Model):
@@ -51,8 +52,8 @@ class Exhibition(models.Model):
     """
 
     title = models.CharField("제목", max_length=64)
-    writer = models.ForeignKey("Writer", on_delete=models.CASCADE, related_name='writer_exhibition')
+    writer = models.ForeignKey("Writer", on_delete=models.CASCADE, related_name="writer_exhibition")
     start = models.CharField("시작일", max_length=12)
     end = models.CharField("종료일", max_length=12)
     created_at = models.DateTimeField("등록일자", auto_now_add=True)
-    updated_at = models.DateTimeField("수정일자", auto_now=True)  
+    updated_at = models.DateTimeField("수정일자", auto_now=True)
