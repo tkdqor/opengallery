@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작가 등록 신청 내역 조회 페이지</h1>
+
+<table border="1">
+	<th>이름</th>
+	<th>성별</th>
+    <th>생년월일</th>
+    <th>이메일</th>
+    <th>연락처</th>
+    <th>신청 일시</th>
+    <th>승인/반려 상태</th>
+    <th>승인 하기</th>
+    {% if writers %}
+    {% for writer in writers %}
+    <tr><!-- 테이블 줄 시작 -->
+        <td>{{ writer.name }}</td>
+        <td>{{ writer.gender }}</td>
+        <td>{{ writer.birth }}</td>
+        <td>{{ writer.email }}</td>
+        <td>{{ writer.mobile }}</td>
+        <td>{{ writer.created_at }}</td>
+        <td>{{ writer.approval }}</td>
+        <td>
+            <form method="POST" action="{% url 'writers:admin_register' %}" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                <div id="admin_register-form">
+                    <label><input class="form-control" type="checkbox" id="admin_register" name="admin_register" value="{{ writer.id }}"></label>
+                </div>
+        </td>
+    </tr><!-- 테이블 줄 끝 -->
+    {% endfor %}
+    {% endif %}
+</table>
+    <button type="submit" id="admin_register_button" style="margin-top: 20px">작가 등록 신청 승인하기</button>
+</body>
+</html>
