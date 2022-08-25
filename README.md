@@ -76,7 +76,7 @@
 # --- COMMIT END ---
 # <타입> 리스트
 #   init    : 초기화
-#   feat  : 기능추가
+#   feat    : 기능추가
 #   add     : 내용추가
 #   update  : 기능 보완 (업그레이드)
 #   fix     : 버그 수정
