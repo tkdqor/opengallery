@@ -53,6 +53,7 @@ class Exhibition(models.Model):
 
     title = models.CharField("제목", max_length=64)
     writer = models.ForeignKey("Writer", on_delete=models.CASCADE, related_name="writer_exhibition")
+    painting = models.OneToOneField(Painting, on_delete=models.PROTECT, null=True)
     start = models.CharField("시작일", max_length=12)
     end = models.CharField("종료일", max_length=12)
     created_at = models.DateTimeField("등록일자", auto_now_add=True)
