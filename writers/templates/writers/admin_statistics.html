@@ -1,3 +1,4 @@
+{% load my_filter %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,13 +20,6 @@
     {% for writer in writers %}
     <tr><!-- 테이블 줄 시작 -->
         <td>{{ writer.name }}</td>
-        <!-- {% for paint in writer.writer_painting.all %}
-            {% if paint.size < 101 %}
-                <td>{{ writer.writer_painting.all.count }}</td>
-            {% else %}
-                <td>없음</td>
-            {% endif %}
-        {% endfor %} -->
         <td>미구현</td>
         <td>미구현</td>
     </tr><!-- 테이블 줄 끝 -->

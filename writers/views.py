@@ -147,7 +147,7 @@ def admin_statistics(request):
 
     작가 통계 페이지 구현
     등록된 총 작품 개수 / 등록된 총 작가 수 / 승인대기 중인 작가 수 응답
-    요구사항인 작가별 100호 이하 작품 개수 및 작품 평균 가격 미구현
+    요구사항인 작가별 100호 이하 작품 개수 및 작품 평균 가격은 구현하지 못함
     """
 
     paintings_count = Painting.objects.all().count()

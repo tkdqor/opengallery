@@ -49,6 +49,7 @@ class Exhibition(models.Model):
     Assignee : 상백
 
     Writer 모델과 1:N 관계가 형성되어 있는 Exhibition 전시 모델 정의
+    Painting 모델과는 1:1 관계 설정 - 1명의 작가의 작품만 전시된다고 판단
     """
 
     title = models.CharField("제목", max_length=64)
