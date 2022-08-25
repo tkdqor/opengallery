@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작품 등록 페이지</h1>
+
+<!-- 에러 메시지 띄우기 -->
+<div id="my_writer_painting-error-box">
+    {% if error %}
+        <div id="my_writer_painting-error">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    <!-- 작품 등록 정보 받기 -->
+    <form method="POST" action="{% url 'accounts:my_writer_painting' %}" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div id="my_writer_painting-form-box">
+            <div id="my_writer_painting-form-box">
+                <div id="my_writer_painting-form1">
+                    <label class="form-label" for="title">제목</label>
+                    <input class="form-control" type="text" maxlength='64' id="title" name="title" placeholder="제목">
+                </div>
+                <div id="my_writer_painting-form2">
+                    <label class="form-label" for="price">가격</label>
+                    <input class="form-control" type="number" min="1" id="price" name="price" placeholder="가격">
+                </div>
+                <div id="my_writer_painting-form3">
+                    <label class="form-label" for="size">호수</label>
+                    <input class="form-control" type="number" min="1" max="500" id="size" name="size" placeholder="호수">
+                </div>
+            </div>
+            <button type="submit" id="my_writer_painting_button" style="margin-top: 20px">작품 등록하기</button>
+        </div>
+</div>
+
+</body>
+</html>

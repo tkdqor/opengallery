@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>전시 등록 페이지</h1>
+
+<!-- 에러 메시지 띄우기 -->
+<div id="my_writer_exhibition-error-box">
+    {% if error %}
+        <div id="my_writer_exhibition-error">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+
+<div>
+    <!-- 전시 등록 정보 받기 -->
+    <form method="POST" action="{% url 'accounts:my_writer_exhibition' %}" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div id="my_writer_exhibition-form-box">
+            <div id="my_writer_exhibition-form-box">
+                <div id="my_writer_exhibition-form1">
+                    <label class="form-label" for="title">제목</label>
+                    <input class="form-control" type="text" maxlength='64' id="title" name="title" placeholder="제목">
+                </div>
+                <div id="my_writer_exhibition-form2">
+                    <label class="form-label" for="start">시작일</label>
+                    <input class="form-control" type="date" id="start" name="start" placeholder="시작일">
+                </div>
+                <div id="my_writer_exhibition-form3">
+                    <label class="form-label" for="end">종료일</label>
+                    <input class="form-control" type="date" id="end" name="end" placeholder="종료일">
+                </div>
+                <div id="my_writer_exhibition-form4">
+                    <select name="painting" id="painting">
+                        <option disabled selected>작품목록 선택</option>
+                        {% for painting in paintings %}
+                        <option value="{{ painting.id }}">{{ painting.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" id="my_writer_exhibition_button" style="margin-top: 20px">전시 등록하기</button>
+        </div>
+</div>
+
+</body>
+</html>

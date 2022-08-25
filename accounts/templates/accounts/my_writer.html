@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>OpenGallery</title>
+</head>
+<body>
+<h1>작가 페이지 대시보드</h1>
+
+<p>이름 : {{ writer.name }}</p>
+<p>성별 : {{ writer.gender }}</p>
+<p>생년월일 : {{ writer.birth }}</p>
+<p>이메일 : {{ writer.email }}</p>
+<p>연락처 : {{ writer.mobile }}</p>
+
+<h2>등록된 작품 목록</h2>
+{% for paint in writer.writer_painting.all %}
+<p>작품명 : {{ paint.title }}</p>
+{% endfor %}
+
+<h2>등록된 전시 목록</h2>
+{% for exhibition in writer.writer_exhibition.all %}
+<p>전시명 : {{ exhibition.title }}</p>
+{% endfor %}
+
+<br>
+
+<div>
+    <a href="{% url 'accounts:my_writer_painting' %}">작품 등록하기</a>
+</div>
+
+<div>
+    <a href="{% url 'accounts:my_writer_exhibition' %}">전시 등록하기</a>
+</div>
+
+</body>
+</html>
